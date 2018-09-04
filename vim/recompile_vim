@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# set to whatever vim version you are installing (8.2 => /usr/share/vim/vim82)
+VIMMRUNTIMEDIR=/usr/share/vim/vim81
+
+# make sure you can move into the vim/src/ dir
+cd vim/src
+sudo make uninstall
+make distclean
+
+# check configuration options for what you want
+./configure --with-features=huge --enable-multibyte --enable-python3interp=yes --with-python3-command=/usr/bin/python3.5 --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu --enable-cscope --prefix=/usr/local
+
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
+
+sudo make install
